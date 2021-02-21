@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FakeItEasy" Version="6.1.0" />
+    <PackageReference Include="FakeItEasy" Version="6.2.1" />
   </ItemGroup>
 
   <ItemGroup>
