@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PackageId>L3.DotNet.Core.Runtime.Faker.Moq</PackageId>
-    <PackageVersion>1.0.0-rc-2</PackageVersion>
+    <PackageId>Lambda3.DotNet.Core.Runtime.Faker.Moq</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
     <Authors>William Espinosa de Rezende</Authors>

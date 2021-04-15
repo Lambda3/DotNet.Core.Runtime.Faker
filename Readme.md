@@ -6,29 +6,29 @@ Lib para trocar implementações injetadas via DI em tempo de execução nos tes
 
 ### Com FakeItEasy
 
-[![NuGet](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.FakeItEasy.svg?style=flat)](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.FakeItEasy.svg?style=flat)
+[![NuGet](https://img.shields.io/nuget/v/Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy.svg?style=flat)](https://img.shields.io/nuget/v/Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy.svg?style=flat)
 
-[NuGet package](https://www.nuget.org/packages/L3.DotNet.Core.Runtime.Faker.FakeItEasy/) disponível:
+[NuGet package](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy/) disponível:
 ```
-PM> Install-Package L3.DotNet.Core.Runtime.Faker.FakeItEasy -Version 1.0.0-rc-2
+PM> Install-Package Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy -Version 1.0.0
 ```
 
 ### Com Moq
 
-[![NuGet](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.Moq.svg?style=flat)](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.Moq.svg?style=flat)
+[![NuGet](https://img.shields.io/nuget/v/Lambda3.DotNet.Core.Runtime.Faker.Moq.svg?style=flat)](https://img.shields.io/nuget/v/Lambda3.DotNet.Core.Runtime.Faker.Moq.svg?style=flat)
 
-[NuGet package](https://www.nuget.org/packages/L3.DotNet.Core.Runtime.Faker.Moq/) disponível:
+[NuGet package](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker.Moq/) disponível:
 ```
-PM> Install-Package L3.DotNet.Core.Runtime.Faker.Moq -Version 1.0.0-rc-2
+PM> Install-Package Lambda3.DotNet.Core.Runtime.Faker.Moq -Version 1.0.0
 ```
 
 ### Manualmente
 
-[![NuGet](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.svg?style=flat)](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.svg?style=flat)
+[![NuGet](https://img.shields.io/nuget/v/Lambda3.DotNet.Core.Runtime.Faker.svg?style=flat)](https://img.shields.io/nuget/v/Lambda3.DotNet.Core.Runtime.Faker.svg?style=flat)
 
-[NuGet package](https://www.nuget.org/packages/L3.DotNet.Core.Runtime.Faker/) disponível:
+[NuGet package](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker/) disponível:
 ```
-PM> Install-Package L3.DotNet.Core.Runtime.Faker -Version 1.0.0-rc-3
+PM> Install-Package Lambda3.DotNet.Core.Runtime.Faker -Version 1.0.0
 ```
 
 ## Configuração
