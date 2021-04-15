@@ -2,9 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-     <PackageVersion>1.0.0-rc-1</PackageVersion>
+    <PackageId>L3.DotNet.Core.Runtime.Faker.Moq</PackageId>
+    <PackageVersion>1.0.0-rc-1</PackageVersion>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
+    <Authors>William Espinosa de Rezende</Authors>
+    <Company>Lambda3</Company>
+    <PackageDescription>Biblioteca para troca de dependências em tempo de execução dos testes com Moq</PackageDescription>
+    <PackageTags>dotnet core; tests; moq;</PackageTags>
+    <RepositoryUrl>https://github.com/Lambda3/DotNet.Core.Runtime.Faker</RepositoryUrl>
+    <RepositoryBranch>main</RepositoryBranch>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
