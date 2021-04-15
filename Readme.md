@@ -2,7 +2,38 @@
 
 Lib para trocar implementações injetadas via DI em tempo de execução nos testes integrados
 
-## Através do [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)
+## Instalação
+
+### Com FakeItEasy
+
+[![NuGet](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.FakeItEasy.svg?style=flat)](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.FakeItEasy.svg?style=flat)
+
+[NuGet package](https://www.nuget.org/packages/L3.DotNet.Core.Runtime.Faker.FakeItEasy/) disponível:
+```
+PM> Install-Package L3.DotNet.Core.Runtime.Faker.FakeItEasy -Version 1.0.0-rc-2
+```
+
+### Com Moq
+
+[![NuGet](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.Moq.svg?style=flat)](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.Moq.svg?style=flat)
+
+[NuGet package](https://www.nuget.org/packages/L3.DotNet.Core.Runtime.Faker.Moq/) disponível:
+```
+PM> Install-Package L3.DotNet.Core.Runtime.Faker.Moq -Version 1.0.0-rc-2
+```
+
+### Manualmente
+
+[![NuGet](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.svg?style=flat)](https://img.shields.io/nuget/v/L3.DotNet.Core.Runtime.Faker.svg?style=flat)
+
+[NuGet package](https://www.nuget.org/packages/L3.DotNet.Core.Runtime.Faker/) disponível:
+```
+PM> Install-Package L3.DotNet.Core.Runtime.Faker -Version 1.0.0-rc-3
+```
+
+## Configuração
+
+### Através do [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)
 - Lib DotNet.Core.Runtime.Faker.FakeItEasy 
 -  Registrar o faker 
 ```c#
@@ -33,7 +64,7 @@ Deve retornar valor informado no change =)
 serviceProvider.ResetAllChanges();
 ```
 
-## Através do [Moq](https://github.com/Moq/moq4)
+### Através do [Moq](https://github.com/Moq/moq4)
 - Lib DotNet.Core.Runtime.Faker.Moq
 
 Muito parecido com o FakeItEasy, mas com a sintaxe do moq
@@ -49,7 +80,7 @@ e
  serviceProvider.Change<Clock>(mock => mock.Setup(x => x.Now()).Returns(new DateTime()));
 ```
 
-## Manualmente
+### Manualmente
 - Lib DotNet.Core.Runtime.Faker
 
 Muito parecido com os anteriores, mas sem dependências das libs
