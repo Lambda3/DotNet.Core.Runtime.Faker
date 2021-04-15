@@ -44,6 +44,19 @@ namespace DotNet.Core.Runtime.Faker.Unit.Tests
             serviceProvider.GetService<MyClass>().Should().BeOfType<MyClass2>();
         }
 
+        [Test]
+        public void ShouldGet()
+        {
+            var registeredFake = new MyClass();
+            var service = new ServiceCollection();
+            service.AddServiceWithFaker(() => registeredFake);
+
+            using var serviceProvider = service.BuildServiceProvider();
+            var fake = serviceProvider.Get<MyClass>();
+
+            fake.Should().Be(registeredFake);
+        }
+
         public class MyClass
         {
             public int MyProperty { get; set; }

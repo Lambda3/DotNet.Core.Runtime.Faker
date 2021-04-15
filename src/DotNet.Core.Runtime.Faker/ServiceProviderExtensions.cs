@@ -20,5 +20,8 @@ namespace DotNet.Core.Runtime.Faker
 
         public static void Change<T>(this IServiceProvider services, T fake) where T : class =>
             services.GetRuntimeFaker<T>().Change(fake);
+
+        public static T Get<T>(this IServiceProvider services) where T : class =>
+            services.GetRuntimeFaker<T>().Get<T>();
     }
 }
