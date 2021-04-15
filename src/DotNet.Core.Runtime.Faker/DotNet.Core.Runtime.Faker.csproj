@@ -3,9 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-     <PackageVersion>1.0.0-rc-1</PackageVersion>
+    <PackageId>L3.DotNet.Core.Runtime.Faker</PackageId>
+    <PackageVersion>1.0.0-rc-1</PackageVersion>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
+    <Authors>William Espinosa de Rezende</Authors>
+    <Company>Lambda3</Company>
+    <PackageDescription>Biblioteca para troca de dependências em tempo de execução dos testes</PackageDescription>
+    <PackageTags>dotnet core; tests</PackageTags>
+    <RepositoryUrl>https://github.com/Lambda3/DotNet.Core.Runtime.Faker</RepositoryUrl>
+    <RepositoryBranch>main</RepositoryBranch>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
