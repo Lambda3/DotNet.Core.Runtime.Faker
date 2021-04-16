@@ -13,9 +13,9 @@ namespace DotNet.Core.Runtime.Faker.Unit.Tests
             service.AddServiceWithFaker(() => new MyClass());
 
             using var serviceProvider = service.BuildServiceProvider();
-            serviceProvider.Change<MyClass>(new MyClass2());
+            serviceProvider.ChangeFake<MyClass>(new MyClass2());
 
-            serviceProvider.ResetAllChanges();
+            serviceProvider.ResetAllFakeChanges();
             serviceProvider.GetService<MyClass>().Should().BeOfType<MyClass>();
         }
 
@@ -26,9 +26,9 @@ namespace DotNet.Core.Runtime.Faker.Unit.Tests
             service.AddServiceWithFaker(() => new MyClass());
 
             using var serviceProvider = service.BuildServiceProvider();
-            serviceProvider.Change<MyClass>(new MyClass2());
+            serviceProvider.ChangeFake<MyClass>(new MyClass2());
 
-            serviceProvider.ResetChange<MyClass>();
+            serviceProvider.ResetFakeChange<MyClass>();
             serviceProvider.GetService<MyClass>().Should().BeOfType<MyClass>();
         }
 
@@ -39,7 +39,7 @@ namespace DotNet.Core.Runtime.Faker.Unit.Tests
             service.AddServiceWithFaker(() => new MyClass());
 
             using var serviceProvider = service.BuildServiceProvider();
-            serviceProvider.Change<MyClass>(new MyClass2());
+            serviceProvider.ChangeFake<MyClass>(new MyClass2());
 
             serviceProvider.GetService<MyClass>().Should().BeOfType<MyClass2>();
         }
@@ -52,7 +52,7 @@ namespace DotNet.Core.Runtime.Faker.Unit.Tests
             service.AddServiceWithFaker(() => registeredFake);
 
             using var serviceProvider = service.BuildServiceProvider();
-            var fake = serviceProvider.Get<MyClass>();
+            var fake = serviceProvider.GetFake<MyClass>();
 
             fake.Should().Be(registeredFake);
         }

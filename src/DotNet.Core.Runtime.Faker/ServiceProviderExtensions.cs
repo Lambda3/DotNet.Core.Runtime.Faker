@@ -12,16 +12,16 @@ namespace DotNet.Core.Runtime.Faker
             return faker;
         }
 
-        public static void ResetAllChanges(this IServiceProvider services) =>
+        public static void ResetAllFakeChanges(this IServiceProvider services) =>
             services.GetRequiredService<RuntimeFaker>().ResetAllChanges();
 
-        public static void ResetChange<T>(this IServiceProvider services) where T : class =>
+        public static void ResetFakeChange<T>(this IServiceProvider services) where T : class =>
             services.GetRequiredService<RuntimeFaker>().ResetChange<T>();
 
-        public static void Change<T>(this IServiceProvider services, T fake) where T : class =>
+        public static void ChangeFake<T>(this IServiceProvider services, T fake) where T : class =>
             services.GetRuntimeFaker<T>().Change(fake);
 
-        public static T Get<T>(this IServiceProvider services) where T : class =>
+        public static T GetFake<T>(this IServiceProvider services) where T : class =>
             services.GetRuntimeFaker<T>().Get<T>();
     }
 }

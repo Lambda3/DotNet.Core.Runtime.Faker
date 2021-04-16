@@ -3,20 +3,20 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
     <Authors>William Espinosa de Rezende</Authors>
     <Company>Lambda3</Company>
     <PackageDescription>Biblioteca para troca de dependências em tempo de execução dos testes com FakeItEasy</PackageDescription>
-    <PackageTags>dotnet core; tests</PackageTags>
+    <PackageTags>dotnet core; tests; fakeiteasy;</PackageTags>
     <RepositoryUrl>https://github.com/Lambda3/DotNet.Core.Runtime.Faker</RepositoryUrl>
     <RepositoryBranch>main</RepositoryBranch>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FakeItEasy" Version="6.2.1" />
+    <PackageReference Include="FakeItEasy" Version="6.*" />
   </ItemGroup>
 
   <ItemGroup>

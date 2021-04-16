@@ -10,7 +10,7 @@ Lib para trocar implementações injetadas via DI em tempo de execução nos tes
 
 [NuGet package](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy/) disponível:
 ```
-PM> Install-Package Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy -Version 1.0.0
+> dotnet add package Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy
 ```
 
 ### Com Moq
@@ -19,7 +19,7 @@ PM> Install-Package Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy -Version 1.0.0
 
 [NuGet package](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker.Moq/) disponível:
 ```
-PM> Install-Package Lambda3.DotNet.Core.Runtime.Faker.Moq -Version 1.0.0
+> dotnet add package Lambda3.DotNet.Core.Runtime.Faker.Moq
 ```
 
 ### Manualmente
@@ -28,13 +28,13 @@ PM> Install-Package Lambda3.DotNet.Core.Runtime.Faker.Moq -Version 1.0.0
 
 [NuGet package](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker/) disponível:
 ```
-PM> Install-Package Lambda3.DotNet.Core.Runtime.Faker -Version 1.0.0
+> dotnet add package Lambda3.DotNet.Core.Runtime.Faker
 ```
 
 ## Configuração
 
 ### Através do [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)
-- Lib DotNet.Core.Runtime.Faker.FakeItEasy 
+- Lib Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy 
 -  Registrar o faker 
 ```c#
 var registeredValue = new DateTime();
@@ -49,7 +49,7 @@ var serviceProvider = factory.Services;
 
 - Mudar implementação
 ```c#
-serviceProvider.Change<Clock>(faker => A.CallTo(() => faker.Now()).Returns(new DateTime()));
+serviceProvider.ChangeFake<Clock>(faker => A.CallTo(() => faker.Now()).Returns(new DateTime()));
 ```
 
 - Receber novo valor
@@ -61,11 +61,11 @@ Deve retornar valor informado no change =)
 
 - Limpar implementação para não influenciar em outros testes
 ```c#
-serviceProvider.ResetAllChanges();
+serviceProvider.ResetAllFakeChanges();
 ```
 
 ### Através do [Moq](https://github.com/Moq/moq4)
-- Lib DotNet.Core.Runtime.Faker.Moq
+- Lib Lambda3.DotNet.Core.Runtime.Faker.Moq
 
 Muito parecido com o FakeItEasy, mas com a sintaxe do moq
 ```c#
@@ -77,11 +77,11 @@ builder.ConfigureTestServices(services =>
 ```
 e
 ```c#
- serviceProvider.Change<Clock>(mock => mock.Setup(x => x.Now()).Returns(new DateTime()));
+ serviceProvider.ChangeFake<Clock>(mock => mock.Setup(x => x.Now()).Returns(new DateTime()));
 ```
 
 ### Manualmente
-- Lib DotNet.Core.Runtime.Faker
+- Lib Lambda3.DotNet.Core.Runtime.Faker
 
 Muito parecido com os anteriores, mas sem dependências das libs
 ```c#
@@ -93,7 +93,7 @@ builder.ConfigureTestServices(services =>
 ```
 e
 ```c#
-serviceProvider.Change<Clock>(() => new FakeClock());
+serviceProvider.ChangeFake<Clock>(() => new FakeClock());
 ```
 
 Exemplos completos:

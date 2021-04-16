@@ -5,11 +5,11 @@ namespace DotNet.Core.Runtime.Faker.Moq
 {
     public static class ServiceProviderExtensions
     {
-        public static void Change<T>(this IServiceProvider services, Action<Mock<T>> configure) where T : class
+        public static void ChangeFake<T>(this IServiceProvider services, Action<Mock<T>> configure) where T : class
         {
             var mock = new Mock<T>();
             configure.Invoke(mock);
-            services.Change(mock.Object);
+            services.ChangeFake(mock.Object);
         }
     }
 }

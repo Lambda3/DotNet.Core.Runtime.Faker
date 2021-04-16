@@ -43,7 +43,7 @@ namespace DotNet.Core.Faker.Runtime.Integration.Tests
         public void TearDown()
         {
             cliente.Dispose();
-            serviceProvider.ResetAllChanges();
+            serviceProvider.ResetAllFakeChanges();
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace DotNet.Core.Faker.Runtime.Integration.Tests
         public async Task ShouldChangeClockImplementation()
         {
             var now = new Bogus.Faker().Date.Past();
-            serviceProvider.Change<Clock>(faker => A.CallTo(() => faker.Now()).Returns(now));
+            serviceProvider.ChangeFake<Clock>(faker => A.CallTo(() => faker.Now()).Returns(now));
 
             var result = await cliente.GetAsync("time");
             result.StatusCode.Should().Be(200);
@@ -74,8 +74,8 @@ namespace DotNet.Core.Faker.Runtime.Integration.Tests
         [Test]
         public async Task ShouldCleanChangesAndRestoreRegisteredValue()
         {
-            serviceProvider.Change<Clock>(faker => A.CallTo(() => faker.Now()).Returns(new Bogus.Faker().Date.Past()));
-            serviceProvider.ResetAllChanges();
+            serviceProvider.ChangeFake<Clock>(faker => A.CallTo(() => faker.Now()).Returns(new Bogus.Faker().Date.Past()));
+            serviceProvider.ResetAllFakeChanges();
 
             var result = await cliente.GetAsync("time");
             result.StatusCode.Should().Be(200);

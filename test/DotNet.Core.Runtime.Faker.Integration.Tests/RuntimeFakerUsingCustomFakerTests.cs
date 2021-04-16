@@ -41,13 +41,13 @@ namespace DotNet.Core.Faker.Runtime.Integration.Tests
         public void TearDown()
         {
             cliente.Dispose();
-            serviceProvider.ResetAllChanges();
+            serviceProvider.ResetAllFakeChanges();
         }
 
         [Test]
         public async Task ShouldChangeClockImplementation()
         {
-            serviceProvider.Change<Clock>(new MyClock());
+            serviceProvider.ChangeFake<Clock>(new MyClock());
 
             var result = await cliente.GetAsync("time");
             result.StatusCode.Should().Be(200);
