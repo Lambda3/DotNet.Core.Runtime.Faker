@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+    
+jobs:
+  build:
+
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'DotNet.Core.Runtime.Faker.sln'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install .NET 3.1 SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 3.1.x
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build $SOLUTION -c $BUILD_CONFIG --no-restore
+
+    - name: Run tests
+      run: dotnet test  --logger trx -c $BUILD_CONFIG --no-restore --no-build 

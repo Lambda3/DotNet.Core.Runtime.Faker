@@ -1,41 +1,39 @@
 
 [![Build status (DotNet.Core.Runtime.Faker)](https://img.shields.io/github/actions/workflow/status/Lambda3/DotNet.Core.Runtime.Faker/build.yaml)](https://github.com/Lambda3/DotNet.Core.Runtime.Faker/actions/workflows/build.yaml)
 
-| Pacote | Versão   | Downloads | 
+| Package | Version   | Downloads | 
 | ------------- | ------------- | -- |
 | Moq | [![NuGet version (DotNet.Core.Runtime.Faker.Moq)](https://img.shields.io/github/v/release/Lambda3/DotNet.Core.Runtime.Faker)](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker.Moq/) | [![NuGet version (DotNet.Core.Runtime.Faker.Moq)](https://img.shields.io/nuget/dt/Lambda3.DotNet.Core.Runtime.Faker.Moq)](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker.Moq/) |
 | FakeItEasy | [![NuGet version (DotNet.Core.Runtime.Faker.FakeItEasy)](https://img.shields.io/github/v/release/Lambda3/DotNet.Core.Runtime.Faker)](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy/) | [![NuGet version (DotNet.Core.Runtime.Faker.FakeItEasy)](https://img.shields.io/nuget/dt/Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy)](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy/)
-| Manual | [![NuGet version (DotNet.Core.Runtime.Faker)](https://img.shields.io/github/v/release/Lambda3/DotNet.Core.Runtime.Faker)](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker/) | [![NuGet version (DotNet.Core.Runtime.Faker)](https://img.shields.io/nuget/dt/Lambda3.DotNet.Core.Runtime.Faker)](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker/)
+| Manually | [![NuGet version (DotNet.Core.Runtime.Faker)](https://img.shields.io/github/v/release/Lambda3/DotNet.Core.Runtime.Faker)](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker/) | [![NuGet version (DotNet.Core.Runtime.Faker)](https://img.shields.io/nuget/dt/Lambda3.DotNet.Core.Runtime.Faker)](https://www.nuget.org/packages/Lambda3.DotNet.Core.Runtime.Faker/)
+
 
 # DotNet.Core.Runtime.Faker
 
-## Read this in other language: [English](https://github.com/Lambda3/DotNet.Core.Runtime.Faker/blob/main/Readme.en.md)
+Lib to change runtime implementation by DI in integration tests
 
+## Installation
 
-Lib para trocar implementações injetadas via DI em tempo de execução nos testes integrados
-
-## Instalação
-
-### Com Moq
+### Using Moq
 ```
 > dotnet add package Lambda3.DotNet.Core.Runtime.Faker.Moq
 ```
 
-### Com FakeItEasy
+### Using FakeItEasy
 ```
 > dotnet add package Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy
 ```
 
-### Manual
+### Manually
 ```
 > dotnet add package Lambda3.DotNet.Core.Runtime.Faker
 ```
 
-## Configuração
+## Configuration
 
-### Através do [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)
+### Using [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)
 - Lib DotNet.Core.Runtime.Faker.FakeItEasy 
--  Registrar o faker 
+-  Faker registering 
 ```c#
 var registeredValue = new DateTime();
 
@@ -47,27 +45,27 @@ var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
 var serviceProvider = factory.Services;
 ```
 
-- Mudar implementação
+- Change implementation
 ```c#
 serviceProvider.Change<Clock>(faker => A.CallTo(() => faker.Now()).Returns(new DateTime()));
 ```
 
-- Receber novo valor
+- Set new value
 
 ```c#
 serviceProvider.GetService<Clock>().Now();
 ```
-Deve retornar valor informado no change =)
+Should returns new value =)
 
-- Limpar implementação para não influenciar em outros testes
+- Clean implementation to avoid problems in anothers tests
 ```c#
 serviceProvider.ResetAllChanges();
 ```
 
-### Através do [Moq](https://github.com/Moq/moq4)
+### Using [Moq](https://github.com/Moq/moq4)
 - Lib DotNet.Core.Runtime.Faker.Moq
 
-Muito parecido com o FakeItEasy, mas com a sintaxe do moq
+Very similar with FakeItEasy, but using moq syntax
 ```c#
 factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
 builder.ConfigureTestServices(services =>
@@ -75,15 +73,15 @@ builder.ConfigureTestServices(services =>
     services.AddServiceWithFaker<Clock>(mock => mock.Setup(x => x.Now()).Returns(registeredValue));
 }));
 ```
-e
+and
 ```c#
  serviceProvider.Change<Clock>(mock => mock.Setup(x => x.Now()).Returns(new DateTime()));
 ```
 
-### Manualmente
+### Manually
 - Lib DotNet.Core.Runtime.Faker
 
-Muito parecido com os anteriores, mas sem dependências das libs
+Without any libs
 ```c#
 factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
 builder.ConfigureTestServices(services =>
@@ -91,14 +89,12 @@ builder.ConfigureTestServices(services =>
     services.AddServiceWithFaker<Clock>(() => new FakeClock());
 }));
 ```
-e
+and
 ```c#
 serviceProvider.Change<Clock>(() => new FakeClock());
 ```
 
-Exemplos completos:
+Completed samples:
 - [Com FakeItEasy](https://github.com/Lambda3/DotNet.Core.Runtime.Faker/blob/main/test/DotNet.Core.Runtime.Faker.Integration.Tests/RuntimeFakerUsingFakeItEasyTests.cs)
 - [Com Moq](https://github.com/Lambda3/DotNet.Core.Runtime.Faker/blob/main/test/DotNet.Core.Runtime.Faker.Integration.Tests/RuntimeFakerUsingMoqTests.cs)
 - [Manualmente](https://github.com/Lambda3/DotNet.Core.Runtime.Faker/blob/main/test/DotNet.Core.Runtime.Faker.Integration.Tests/RuntimeFakerUsingCustomFakerTests.cs)
-
-

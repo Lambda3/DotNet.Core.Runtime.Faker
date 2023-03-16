@@ -1,0 +1,49 @@
+name: Publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'DotNet.Core.Runtime.Faker.sln'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 3.1.x
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build $SOLUTION -c $BUILD_CONFIG --no-restore
+
+      - name: Tag name
+        id: tag-name
+        run: |
+          echo "SOURCE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create the package
+        run: dotnet pack -p:PackageVersion=$SOURCE_TAG -c $BUILD_CONFIG src/DotNet.Core.Runtime.Faker.Moq --no-build --no-restore
+        env:
+          SOURCE_TAG: ${{ steps.tag-name.outputs.SOURCE_TAG }}
+
+      - name: Create the package
+        run: dotnet pack -p:PackageVersion=$SOURCE_TAG -c $BUILD_CONFIG src/DotNet.Core.Runtime.Faker.FakeItEasy --no-build --no-restore
+        env:
+          SOURCE_TAG: ${{ steps.tag-name.outputs.SOURCE_TAG }}
+
+      - name: Publish the package to nuget.org
+        run: dotnet nuget push **/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
+

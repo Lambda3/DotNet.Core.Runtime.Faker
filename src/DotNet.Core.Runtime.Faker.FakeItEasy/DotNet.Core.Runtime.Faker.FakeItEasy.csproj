@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>Lambda3.DotNet.Core.Runtime.Faker.FakeItEasy</PackageId>
-    <PackageVersion>1.0.1</PackageVersion>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSymbols>true</IncludeSymbols>
     <Authors>William Espinosa de Rezende</Authors>
